@@ -6,7 +6,7 @@
 /*   By: epenaloz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 18:36:13 by epenaloz          #+#    #+#             */
-/*   Updated: 2024/08/08 18:49:06 by epenaloz         ###   ########.fr       */
+/*   Updated: 2024/08/08 19:47:04 by epenaloz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 int main(int ac, char **av)
 {
-    ft_printf("%d\n", ac);
-    ft_printf("ignorar %s\n", av[0]);
+	if (ac < 2)
+	{
+		ft_printf("Error\n");
+		return (1);
+	}
+	
+    parse_args(av);
 }
