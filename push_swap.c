@@ -6,7 +6,7 @@
 /*   By: epenaloz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 18:36:13 by epenaloz          #+#    #+#             */
-/*   Updated: 2024/08/08 19:47:04 by epenaloz         ###   ########.fr       */
+/*   Updated: 2024/08/16 18:43:11 by epenaloz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ int main(int ac, char **av)
 		ft_printf("Error\n");
 		return (1);
 	}
-	
-    parse_args(av);
+	t_stacks	stacks;
+    parse_args(av, &stacks);
 }

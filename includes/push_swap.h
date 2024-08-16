@@ -6,7 +6,7 @@
 /*   By: epenaloz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 18:37:03 by epenaloz          #+#    #+#             */
-/*   Updated: 2024/08/08 19:48:56 by epenaloz         ###   ########.fr       */
+/*   Updated: 2024/08/16 18:54:36 by epenaloz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 # include "get_next_line.h"
 # include "libft.h"
 
-t_list	parse_args(char **args)
+typedef struct s_stacks
+{
+	t_list a;
+	t_list b;
+}	t_stacks;
+
+void	parse_args(char **args, t_stacks *stacks);
 
 #endif
