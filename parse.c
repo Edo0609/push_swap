@@ -6,46 +6,17 @@
 /*   By: epenaloz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 19:40:26 by epenaloz          #+#    #+#             */
-/*   Updated: 2024/08/16 21:04:29 by epenaloz         ###   ########.fr       */
+/*   Updated: 2024/08/19 19:35:24 by epenaloz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-// unsigned char	*fake_isspace(unsigned char *str)
-// {
-// 	while ((*str >= 9 && *str <= 13) || *str == ' ')
-// 		str++;
-// 	return (str);
-// }
-
-// int	ft_atoi(const char *str)
-// {
-// 	unsigned char	*ptr;
-// 	int				sign;
-// 	int				num;
-
-// 	sign = 1;
-// 	ptr = (unsigned char *)str;
-// 	num = 0;
-// 	ptr = fake_isspace(ptr);
-// 	if (*ptr == '-' || *ptr == '+')
-// 	{
-// 		if (*ptr == '-')
-// 			sign *= -1;
-// 		ptr++;
-// 	}
-// 	while (*ptr >= '0' && *ptr <= '9')
-// 	{
-// 		num = num * 10 + *ptr - '0';
-// 		ptr++;
-// 	}
-// 	return (num * sign);
-// }
-
 void parse_error(t_stacks *stacks)
 {
-	ft_printf("Error %p\n", stacks);
+	ft_printf("Error\n");
+	ft_lstclear(&(stacks->a), del_content);
+	ft_lstclear(&(stacks->b), del_content);
 	exit(EXIT_FAILURE);
 }
 
@@ -80,8 +51,9 @@ long ps_atol(char *str, t_stacks *stacks, int *i)
 
 void	get_stacks_from_str(char *str, t_stacks *stacks)
 {
-	int	i;
-	long num;
+	int		i;
+	long	num;
+	long	*num_ptr;
 	
 	i = 0;
 	if (!str[i])
@@ -91,7 +63,11 @@ void	get_stacks_from_str(char *str, t_stacks *stacks)
 		num = ps_atol(str, stacks, &i);
 		if (num > 2147483647 || num < -2147483648)
 			parse_error(stacks);
-		ft_printf("%d\n", num);
+		num_ptr = (long *)malloc(sizeof(long));
+		if (!num_ptr)
+			parse_error(stacks);
+		*num_ptr = num;
+		ft_lstadd_back(&(stacks->a), ft_lstnew(num_ptr));
 	}
 }
 
@@ -101,7 +77,5 @@ void	parse_args(char **args, t_stacks *stacks)
 
 	i = 0;
 	while (args[++i])
-	{
 		get_stacks_from_str(args[i], stacks);
-	}
 }
