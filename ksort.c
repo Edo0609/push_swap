@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   ksort.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: epenaloz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 19:16:38 by epenaloz          #+#    #+#             */
-/*   Updated: 2024/09/05 15:53:13 by epenaloz         ###   ########.fr       */
+/*   Created: 2024/09/05 16:27:58 by epenaloz          #+#    #+#             */
+/*   Updated: 2024/09/05 16:41:17 by epenaloz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <push_swap.h>
 
-t_list	*ft_lstnew(void *content)
+void	ksort(t_stacks *stacks)
 {
-	t_list	*node;
+	int pivot;
 
-	node = (t_list *)malloc(sizeof(t_list));
-	if (node == NULL)
-		return (NULL);
-	node -> content = content;
-	node -> index = -1;
-	node -> next = NULL;
-	return (node);
+	pivot = ft_sqrt(ft_lstsize(stacks->a)) * 1.4;
+	ft_printf("pivot = %d\n", pivot);
 }

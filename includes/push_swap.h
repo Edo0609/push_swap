@@ -6,7 +6,7 @@
 /*   By: epenaloz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 18:37:03 by epenaloz          #+#    #+#             */
-/*   Updated: 2024/08/19 20:07:01 by epenaloz         ###   ########.fr       */
+/*   Updated: 2024/09/05 16:38:10 by epenaloz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "ft_printf.h"
 # include "get_next_line.h"
 # include "libft.h"
+# include <limits.h>
 
 typedef struct s_stacks
 {
@@ -25,10 +26,15 @@ typedef struct s_stacks
 
 void	parse_args(char **args, t_stacks *stacks);
 void	del_content(void *content);
-void	sa(t_list *a);
-void	pb(t_stacks *stacks);
-void	push(t_list **from, t_list **to);
-void	rotate(t_list **stack);
-void	reverse_rotate(t_list **stack);
-
+void	swap(t_list *stack, char ab, char print);
+void	ss(t_stacks *stacks);
+void	push(t_list **from, t_list **to, char ab);
+void	rotate(t_list **stack, char ab, char print);
+void	reverse_rotate(t_list **stack, char ab, char print);
+void	rr(t_stacks *stacks);
+void	rrr(t_stacks *stacks);
+void	get_indexes(t_list *stack);
+void	put_index(t_list *stack, long num, int i);
+long	find_min(t_list *stack);
+void	ksort(t_stacks *stacks);
 #endif

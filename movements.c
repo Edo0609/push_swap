@@ -6,13 +6,13 @@
 /*   By: epenaloz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 18:13:05 by epenaloz          #+#    #+#             */
-/*   Updated: 2024/08/19 20:29:46 by epenaloz         ###   ########.fr       */
+/*   Updated: 2024/09/05 15:11:04 by epenaloz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void	swap(t_list *stack)
+void	swap(t_list *stack, char ab, char print)
 {
 	void	*temp;
 	if (ft_lstsize(stack) >= 2)
@@ -21,9 +21,18 @@ void	swap(t_list *stack)
 		stack->content = stack->next->content;
 		stack->next->content = temp;
 	}
+	if (print == 'y')
+		ft_printf("s%c\n", ab);
 }
 
-void	push(t_list **from, t_list **to)
+void	ss(t_stacks *stacks)
+{
+	swap(stacks->a, 'a', 'n');
+	swap(stacks->b, 'b', 'n');
+	ft_printf("ss\n");
+}
+
+void	push(t_list **from, t_list **to, char ab)
 {
 	t_list *temp;
 	if (ft_lstsize(*from) != 0)
@@ -33,6 +42,7 @@ void	push(t_list **from, t_list **to)
 		*to = *from;
 		*from = temp;
 	}
+	ft_printf("p%c\n", ab);
 }
 
 t_list	*get_tail(t_list *stack)
@@ -42,7 +52,7 @@ t_list	*get_tail(t_list *stack)
 	return (stack);
 }
 
-void	rotate(t_list **stack)
+void	rotate(t_list **stack, char ab, char print)
 {
 	t_list	*temp;
 	t_list	*tail;
@@ -54,9 +64,11 @@ void	rotate(t_list **stack)
 		temp->next = NULL;
 		tail->next = temp;
 	}
+	if (print == 'y')
+		ft_printf("r%c\n", ab);
 }
 
-void	reverse_rotate(t_list **stack)
+void	reverse_rotate(t_list **stack, char ab, char print)
 {
 	t_list	*temp;
 	t_list	*tail;
@@ -70,4 +82,20 @@ void	reverse_rotate(t_list **stack)
 		tail->next = *stack;
 		*stack = tail;
 	}
+	if (print == 'y')
+		ft_printf("rr%c\n", ab);
+}
+
+void	rr(t_stacks *stacks)
+{
+	rotate(&(stacks->a), 'a', 'n');
+	rotate(&(stacks->b), 'b', 'n');
+	ft_printf("rr\n");
+}
+
+void	rrr(t_stacks *stacks)
+{
+	reverse_rotate(&(stacks->a), 'a', 'n');
+	reverse_rotate(&(stacks->b), 'b', 'n');
+	ft_printf("rrr\n");
 }

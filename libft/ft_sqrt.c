@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: epenaloz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 19:16:38 by epenaloz          #+#    #+#             */
-/*   Updated: 2024/09/05 15:53:13 by epenaloz         ###   ########.fr       */
+/*   Created: 2024/09/05 16:30:32 by epenaloz          #+#    #+#             */
+/*   Updated: 2024/09/05 16:37:46 by epenaloz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <libft.h>
 
-t_list	*ft_lstnew(void *content)
+double	ft_sqrt(int num)
 {
-	t_list	*node;
+	double	guess;
+	double	epsilon;
 
-	node = (t_list *)malloc(sizeof(t_list));
-	if (node == NULL)
-		return (NULL);
-	node -> content = content;
-	node -> index = -1;
-	node -> next = NULL;
-	return (node);
+	guess = num;
+	epsilon = 0.00001;
+	while ((guess * guess - num) > epsilon
+		|| (guess * guess - num) < -epsilon)
+		guess = (guess + num / guess) / 2;
+	return (guess);
 }

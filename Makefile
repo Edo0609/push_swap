@@ -5,7 +5,7 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra -Iincludes -Llibft
 CFLAGS += -lftprintf -g3 -fsanitize=address
 
-SRC = push_swap.c parse.c movements.c
+SRC = push_swap.c parse.c movements.c indexes.c ksort.c
 
 OBJ = $(SRC:.c=.o)
 

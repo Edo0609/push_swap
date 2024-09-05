@@ -6,7 +6,7 @@
 /*   By: epenaloz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 19:40:26 by epenaloz          #+#    #+#             */
-/*   Updated: 2024/08/19 19:35:24 by epenaloz         ###   ########.fr       */
+/*   Updated: 2024/09/05 16:23:29 by epenaloz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,16 @@ long ps_atol(char *str, t_stacks *stacks, int *i)
 	return (num * sign);
 	
 }
+int	is_repeated(t_list *stack, long num)
+{
+	while (stack != NULL)
+	{
+		if (*((long *)stack->content) == num)
+			return (1);
+		stack = stack->next;
+	}
+	return (0);
+}
 
 void	get_stacks_from_str(char *str, t_stacks *stacks)
 {
@@ -61,7 +71,8 @@ void	get_stacks_from_str(char *str, t_stacks *stacks)
 	while (str[i])
 	{
 		num = ps_atol(str, stacks, &i);
-		if (num > 2147483647 || num < -2147483648)
+		if (num > 2147483647 || num < -2147483648 || 
+			is_repeated(stacks->a, num))
 			parse_error(stacks);
 		num_ptr = (long *)malloc(sizeof(long));
 		if (!num_ptr)

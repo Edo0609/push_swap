@@ -6,7 +6,7 @@
 /*   By: epenaloz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 18:36:13 by epenaloz          #+#    #+#             */
-/*   Updated: 2024/08/19 20:07:14 by epenaloz         ###   ########.fr       */
+/*   Updated: 2024/09/05 16:27:43 by epenaloz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,12 @@ int main(int ac, char **av)
 	}
 	init_stacks(&stacks);
     parse_args(av, &stacks);
-	ft_printf("stack a inicial: \n");
-	ft_lstiter(stacks.a,test);
-	ft_printf("\nstack b inicial: \n");
-	ft_lstiter(stacks.b,test);
-	reverse_rotate(&stacks.a);
-	ft_printf("\nstack a final: \n");
-	ft_lstiter(stacks.a,test);
-	ft_printf("\nstack b final: \n");
-	ft_lstiter(stacks.b,test);
+	// ft_printf("stack a inicial: \n");
+	// ft_lstiter(stacks.a,test);
+	// ft_printf("\nstack b inicial: \n");
+	// ft_lstiter(stacks.b,test);
+	get_indexes(stacks.a);
+	ksort(&stacks);
 	ft_lstclear(&(stacks.a), del_content);
 	ft_lstclear(&(stacks.b), del_content);
 }
