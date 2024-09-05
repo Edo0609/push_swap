@@ -6,7 +6,7 @@
 /*   By: epenaloz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 18:36:13 by epenaloz          #+#    #+#             */
-/*   Updated: 2024/09/05 16:27:43 by epenaloz         ###   ########.fr       */
+/*   Updated: 2024/09/05 18:42:46 by epenaloz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@ int main(int ac, char **av)
 	// ft_lstiter(stacks.b,test);
 	get_indexes(stacks.a);
 	ksort(&stacks);
+	// ft_printf("stack a: \n");
+	// ft_lstiter(stacks.a,test);
+	// ft_printf("\nstack b: \n");
+	// ft_lstiter(stacks.b,test);
 	ft_lstclear(&(stacks.a), del_content);
 	ft_lstclear(&(stacks.b), del_content);
 }

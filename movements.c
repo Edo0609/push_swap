@@ -6,7 +6,7 @@
 /*   By: epenaloz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 18:13:05 by epenaloz          #+#    #+#             */
-/*   Updated: 2024/09/05 15:11:04 by epenaloz         ###   ########.fr       */
+/*   Updated: 2024/09/05 18:00:31 by epenaloz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,17 @@ void	rotate(t_list **stack, char ab, char print)
 {
 	t_list	*temp;
 	t_list	*tail;
-	if (ft_lstsize(*stack) != 0)
+	if (ft_lstsize(*stack) > 1)
 	{
 		temp = *stack;
 		*stack = (*stack)->next;
 		tail = get_tail(*stack);
 		temp->next = NULL;
 		tail->next = temp;
+	
+		if (print == 'y')
+			ft_printf("r%c\n", ab);
 	}
-	if (print == 'y')
-		ft_printf("r%c\n", ab);
 }
 
 void	reverse_rotate(t_list **stack, char ab, char print)
