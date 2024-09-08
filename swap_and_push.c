@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   movements.c                                        :+:      :+:    :+:   */
+/*   swap_and_push.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: epenaloz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 18:13:05 by epenaloz          #+#    #+#             */
-/*   Updated: 2024/09/08 17:31:51 by epenaloz         ###   ########.fr       */
+/*   Updated: 2024/09/08 20:30:36 by epenaloz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void	swap(t_list *stack, char ab, char print)
+void	swap(t_list **stack, char ab, char print)
 {
-	void	*temp;
+	t_list	*first;
+	t_list	*second;
 
-	if (ft_lstsize(stack) >= 2)
+	if (ft_lstsize(*stack) >= 2)
 	{
-		temp = stack->content;
-		stack->content = stack->next->content;
-		stack->next->content = temp;
+		first = *stack;
+		second = (*stack)->next;
+		*stack = second;
+		first->next = second->next;
+		second->next = first;
 	}
 	if (print == 'y')
 		ft_printf("s%c\n", ab);
@@ -28,8 +31,8 @@ void	swap(t_list *stack, char ab, char print)
 
 void	ss(t_stacks *stacks)
 {
-	swap(stacks->a, 'a', 'n');
-	swap(stacks->b, 'b', 'n');
+	swap(&(stacks->a), 'a', 'n');
+	swap(&(stacks->b), 'b', 'n');
 	ft_printf("ss\n");
 }
 

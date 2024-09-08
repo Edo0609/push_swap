@@ -6,7 +6,7 @@
 /*   By: epenaloz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 18:37:03 by epenaloz          #+#    #+#             */
-/*   Updated: 2024/09/08 17:25:16 by epenaloz         ###   ########.fr       */
+/*   Updated: 2024/09/08 20:29:24 by epenaloz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_stacks
 
 void	parse_args(char **args, t_stacks *stacks);
 void	del_content(void *content);
-void	swap(t_list *stack, char ab, char print);
+void	swap(t_list **stack, char ab, char print);
 void	ss(t_stacks *stacks);
 void	push(t_list **from, t_list **to, char ab);
 void	rotate(t_list **stack, char ab, char print);
@@ -37,5 +37,9 @@ void	get_indexes(t_list *stack);
 void	put_index(t_list *stack, long num, int i);
 long	find_min(t_list *stack);
 void	ksort(t_stacks *stacks);
-void	test(void *content);
+int		is_ordered(t_stacks *stacks, char full);
+long	find_max(t_list *stack);
+void	small_sort(t_stacks *stacks);
+int		get_weight(t_list *stack, long max);
+void	three_sort(t_stacks *stacks, char full);
 #endif

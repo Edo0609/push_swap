@@ -6,7 +6,7 @@
 /*   By: epenaloz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 16:27:58 by epenaloz          #+#    #+#             */
-/*   Updated: 2024/09/08 17:37:03 by epenaloz         ###   ########.fr       */
+/*   Updated: 2024/09/08 20:30:12 by epenaloz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	pass_to_a(t_stacks *stacks, long max)
 
 	weight = get_weight(stacks->b, max);
 	if (weight == 1)
-		swap(stacks->b, 'b', 'y');
+		swap(&(stacks->b), 'b', 'y');
 	else if (weight > 1)
 	{
 		while (weight > 0)

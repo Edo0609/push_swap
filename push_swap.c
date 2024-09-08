@@ -6,7 +6,7 @@
 /*   By: epenaloz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 18:36:13 by epenaloz          #+#    #+#             */
-/*   Updated: 2024/09/08 17:27:30 by epenaloz         ###   ########.fr       */
+/*   Updated: 2024/09/08 19:49:24 by epenaloz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,27 @@ void	del_content(void *content)
 	free(content);
 }
 
-void	test(void *content)
+int	is_ordered(t_stacks *stacks, char full)
 {
-	ft_printf("%d\n", *(int *)content);
+	long	num;
+	t_list	*current;
+
+	num = LONG_MIN;
+	current = stacks->a;
+	if (stacks->b == NULL || full != 'y')
+	{
+		while (current != NULL)
+		{
+			if (num > (*((long *)current->content)))
+				return (0);
+			else
+				num = (*((long *)current->content));
+			current = current->next;
+		}
+		return (1);
+	}
+	else
+		return (0);
 }
 
 int	main(int ac, char **av)
@@ -40,7 +58,13 @@ int	main(int ac, char **av)
 	init_stacks(&stacks);
 	parse_args(av, &stacks);
 	get_indexes(stacks.a);
-	ksort(&stacks);
+	if (!is_ordered(&stacks, 'y'))
+	{
+		if (ft_lstsize(stacks.a) > 10)
+			ksort(&stacks);
+		else
+			small_sort(&stacks);
+	}
 	ft_lstclear(&(stacks.a), del_content);
 	ft_lstclear(&(stacks.b), del_content);
 }
