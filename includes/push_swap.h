@@ -6,7 +6,7 @@
 /*   By: epenaloz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 18:37:03 by epenaloz          #+#    #+#             */
-/*   Updated: 2024/09/05 18:03:07 by epenaloz         ###   ########.fr       */
+/*   Updated: 2024/09/08 17:25:16 by epenaloz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ void	get_indexes(t_list *stack);
 void	put_index(t_list *stack, long num, int i);
 long	find_min(t_list *stack);
 void	ksort(t_stacks *stacks);
-void test(void *content);
+void	test(void *content);
 #endif

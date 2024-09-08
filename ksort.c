@@ -6,13 +6,13 @@
 /*   By: epenaloz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 16:27:58 by epenaloz          #+#    #+#             */
-/*   Updated: 2024/09/05 18:52:37 by epenaloz         ###   ########.fr       */
+/*   Updated: 2024/09/08 17:37:03 by epenaloz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void pass_to_b(t_stacks *stacks, int pivot, int *i)
+void	pass_to_b(t_stacks *stacks, int pivot, int *i)
 {
 	while (stacks->a != NULL)
 	{
@@ -29,31 +29,27 @@ void pass_to_b(t_stacks *stacks, int pivot, int *i)
 		}
 		else
 			rotate(&(stacks->a), 'a', 'y');
-			
-		// ft_printf("stack a: \n");
-		// ft_lstiter(stacks->a,test);
-		// ft_printf("\nstack b: \n");
-		// ft_lstiter(stacks->b,test);
 	}
 }
 
 long	find_max(t_list *stack)
 {
-	long max;
+	long	max;
+
 	max = LONG_MIN;
 	while (stack != NULL)
 	{
 		if ((*((long *)stack->content)) > max)
-		max = *((long *)stack->content);
+			max = *((long *)stack->content);
 		stack = stack->next;
 	}
 	return (max);
 }
 
-int get_weight(t_list *stack, long max)
+int	get_weight(t_list *stack, long max)
 {
-	int size;
-	int result;
+	int	size;
+	int	result;
 
 	size = ft_lstsize(stack);
 	result = 0;
@@ -63,15 +59,14 @@ int get_weight(t_list *stack, long max)
 		result++;
 	}
 	if (result <= size / 2)
-		return(result);
+		return (result);
 	else
-		return(result - size);
-	
+		return (result - size);
 }
 
-void pass_to_a(t_stacks *stacks, long max)
+void	pass_to_a(t_stacks *stacks, long max)
 {
-	int weight;
+	int	weight;
 
 	weight = get_weight(stacks->b, max);
 	if (weight == 1)
@@ -89,7 +84,7 @@ void pass_to_a(t_stacks *stacks, long max)
 		while (weight < 0)
 		{
 			reverse_rotate(&(stacks->b), 'b', 'y');
-			weight++;	
+			weight++;
 		}
 	}
 	push(&(stacks->b), &(stacks->a), 'a');
@@ -97,9 +92,9 @@ void pass_to_a(t_stacks *stacks, long max)
 
 void	ksort(t_stacks *stacks)
 {
-	int pivot;
-	int movements;
-	long max;
+	int		pivot;
+	int		movements;
+	long	max;
 
 	pivot = ft_sqrt(ft_lstsize(stacks->a)) * 1.4;
 	movements = 0;
@@ -109,5 +104,4 @@ void	ksort(t_stacks *stacks)
 		max = find_max(stacks->b);
 		pass_to_a(stacks, max);
 	}
-	
 }

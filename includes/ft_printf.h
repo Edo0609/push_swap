@@ -6,7 +6,7 @@
 /*   By: epenaloz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 15:03:27 by epenaloz          #+#    #+#             */
-/*   Updated: 2024/09/05 15:58:01 by epenaloz         ###   ########.fr       */
+/*   Updated: 2024/09/08 17:23:19 by epenaloz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
-
 
 int		ft_printf(char const *str, ...);
 int		type_check(char c, va_list args, size_t bytes);

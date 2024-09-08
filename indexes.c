@@ -6,16 +6,16 @@
 /*   By: epenaloz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 15:49:02 by epenaloz          #+#    #+#             */
-/*   Updated: 2024/09/05 18:44:55 by epenaloz         ###   ########.fr       */
+/*   Updated: 2024/09/08 17:33:49 by epenaloz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-
 long	find_min(t_list *stack)
 {
-	long min;
+	long	min;
+
 	min = LONG_MAX;
 	while (stack != NULL)
 	{
@@ -37,7 +37,6 @@ void	get_indexes(t_list *stack)
 {
 	long	min;
 	int		i;
-
 
 	i = 0;
 	while (i != ft_lstsize(stack))
