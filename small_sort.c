@@ -29,8 +29,6 @@ void	go_to_min(t_stacks *stacks, int weight, int i)
 {
 	while (weight != 0 && stacks->a->index != i)
 		{
-			if (stacks->a->index > stacks->a->next->index)
-				swap(&(stacks->a), 'a', 'y');
 			if (weight > 0 && stacks->a->index != i)
 			{
 				rotate(&(stacks->a), 'a', 'y');

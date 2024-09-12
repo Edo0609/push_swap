@@ -7,16 +7,11 @@
 			"request": "launch",
 			"program": "${fileDirname}/push_swap",
 			"args": [
-				"683",
-				"-812",
-				"-403",
-				"-999",
-				"-340",
-				"-19",
-				"-246",
-				"192",
-				"661",
-				"782"
+				"303",
+				"-928",
+				"-164",
+				"-714",
+				"253"
 			],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",

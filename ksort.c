@@ -73,17 +73,23 @@ void	pass_to_a(t_stacks *stacks, long max)
 		swap(&(stacks->b), 'b', 'y');
 	else if (weight > 1)
 	{
-		while (weight > 0)
+		while (weight > 0) //&& *((long *)stacks->b->content) != max)
 		{
-			rotate(&(stacks->b), 'b', 'y');
+			// if (stacks->b->index == (stacks->b->next->index) - 1)
+			// 	swap(&(stacks->b), 'b', 'y');
+			//if (*((long *)stacks->b->content) != max)
+				rotate(&(stacks->b), 'b', 'y');
 			weight--;
 		}
 	}
 	else if (weight < 0)
 	{
-		while (weight < 0)
+		while (weight < 0) // && *((long *)stacks->b->content) != max)
 		{
-			reverse_rotate(&(stacks->b), 'b', 'y');
+			// if (stacks->b->index == (stacks->b->next->index) - 1)
+			// 	swap(&(stacks->b), 'b', 'y');
+			//if (*((long *)stacks->b->content) != max)
+				reverse_rotate(&(stacks->b), 'b', 'y');
 			weight++;
 		}
 	}
