@@ -6,7 +6,7 @@
 /*   By: epenaloz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 19:40:26 by epenaloz          #+#    #+#             */
-/*   Updated: 2024/09/08 17:29:27 by epenaloz         ###   ########.fr       */
+/*   Updated: 2024/09/16 16:33:36 by epenaloz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	parse_error(t_stacks *stacks)
 {
-	ft_printf("Error\n");
 	ft_lstclear(&(stacks->a), del_content);
 	ft_lstclear(&(stacks->b), del_content);
+	write(STDERR_FILENO, "Error\n", 6);
 	exit(EXIT_FAILURE);
 }
 

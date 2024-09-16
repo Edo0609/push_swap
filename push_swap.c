@@ -6,7 +6,7 @@
 /*   By: epenaloz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 18:36:13 by epenaloz          #+#    #+#             */
-/*   Updated: 2024/09/08 19:49:24 by epenaloz         ###   ########.fr       */
+/*   Updated: 2024/09/16 16:32:45 by epenaloz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,7 @@ int	main(int ac, char **av)
 	t_stacks	stacks;
 
 	if (ac < 2)
-	{
-		ft_printf("Error\n");
-		return (1);
-	}
+		exit(EXIT_FAILURE);
 	init_stacks(&stacks);
 	parse_args(av, &stacks);
 	get_indexes(stacks.a);

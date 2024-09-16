@@ -6,7 +6,7 @@
 /*   By: epenaloz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 16:27:58 by epenaloz          #+#    #+#             */
-/*   Updated: 2024/09/08 20:30:12 by epenaloz         ###   ########.fr       */
+/*   Updated: 2024/09/16 18:34:18 by epenaloz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,19 @@
 
 void	pass_to_b(t_stacks *stacks, int pivot, int *i)
 {
+	int do_rr;
+
+	do_rr = 0;
 	while (stacks->a != NULL)
 	{
 		if (stacks->a->index <= *i)
 		{
 			push(&(stacks->a), &(stacks->b), 'b');
-			rotate(&(stacks->b), 'b', 'y');
 			(*i)++;
+			if (stacks->a != NULL && stacks->a->index <= *i + pivot)
+				rotate(&(stacks->b), 'b', 'y');
+			else
+				do_rr = 1;
 		}
 		else if (stacks->a->index <= *i + pivot)
 		{
@@ -28,19 +34,27 @@ void	pass_to_b(t_stacks *stacks, int pivot, int *i)
 			(*i)++;
 		}
 		else
-			rotate(&(stacks->a), 'a', 'y');
+		{
+			if (do_rr == 1)
+			{
+				rr(stacks);
+				do_rr = 0;	
+			}
+			else
+                rotate(&(stacks->a), 'a', 'y');
+		}
 	}
 }
 
-long	find_max(t_list *stack)
+int	find_max(t_list *stack)
 {
 	long	max;
 
 	max = LONG_MIN;
 	while (stack != NULL)
 	{
-		if ((*((long *)stack->content)) > max)
-			max = *((long *)stack->content);
+		if (stack->index > max)
+			max = stack->index;
 		stack = stack->next;
 	}
 	return (max);
@@ -53,7 +67,7 @@ int	get_weight(t_list *stack, long max)
 
 	size = ft_lstsize(stack);
 	result = 0;
-	while (max != *((long *)stack->content))
+	while (stack != NULL && max != stack->index)
 	{
 		stack = stack->next;
 		result++;
@@ -64,7 +78,7 @@ int	get_weight(t_list *stack, long max)
 		return (result - size);
 }
 
-void	pass_to_a(t_stacks *stacks, long max)
+void	pass_to_a(t_stacks *stacks, int max)
 {
 	int	weight;
 
@@ -73,28 +87,23 @@ void	pass_to_a(t_stacks *stacks, long max)
 		swap(&(stacks->b), 'b', 'y');
 	else if (weight > 1)
 	{
-		while (weight > 0) //&& *((long *)stacks->b->content) != max)
+		while (weight > 0)
 		{
-			// if (stacks->b->index == (stacks->b->next->index) - 1)
-			// 	swap(&(stacks->b), 'b', 'y');
-			//if (*((long *)stacks->b->content) != max)
-				rotate(&(stacks->b), 'b', 'y');
+			rotate(&(stacks->b), 'b', 'y');
 			weight--;
 		}
 	}
 	else if (weight < 0)
 	{
-		while (weight < 0) // && *((long *)stacks->b->content) != max)
+		while (weight < 0)
 		{
-			// if (stacks->b->index == (stacks->b->next->index) - 1)
-			// 	swap(&(stacks->b), 'b', 'y');
-			//if (*((long *)stacks->b->content) != max)
-				reverse_rotate(&(stacks->b), 'b', 'y');
+			reverse_rotate(&(stacks->b), 'b', 'y');
 			weight++;
 		}
 	}
 	push(&(stacks->b), &(stacks->a), 'a');
 }
+
 
 void	ksort(t_stacks *stacks)
 {

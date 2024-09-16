@@ -6,24 +6,11 @@
 /*   By: epenaloz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 18:12:38 by epenaloz          #+#    #+#             */
-/*   Updated: 2024/09/08 20:32:31 by epenaloz         ###   ########.fr       */
+/*   Updated: 2024/09/16 16:51:39 by epenaloz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
-
-long	get_val_from_index(t_list *stack, int index)
-{
-	while ( stack != NULL && stack->index != index)
-		stack = stack->next;
-	return (*(long *)(stack->content));
-}
-
-void test(void *content)
-{
-	ft_printf("%d\n", (int)*(long *)content);
-}
-
 
 void	go_to_min(t_stacks *stacks, int weight, int i)
 {
@@ -46,13 +33,11 @@ void	med_sort(t_stacks *stacks)
 {
 	int	i;
 	int	weight;
-	int minval;
 
 	i = 0;
 	while (!is_ordered(stacks, 'y'))
 	{
-		minval = get_val_from_index(stacks->a, i);
-		weight = get_weight(stacks->a, minval);
+		weight = get_weight(stacks->a, i);
 		go_to_min(stacks, weight, i);
 		if (ft_lstsize(stacks->a) > 3)
 		{
@@ -75,7 +60,7 @@ void	three_sort(t_stacks *stacks, char full)
 	max = find_max(stacks->a);
 	while (!is_ordered(stacks, full))
 		{
-			if (*((long *)stacks->a->content) == max)
+			if (stacks->a->index == max)
 				rotate(&(stacks->a), 'a', 'y');
 			if (stacks->a->index > stacks->a->next->index)
 				swap(&(stacks->a), 'a', 'y');

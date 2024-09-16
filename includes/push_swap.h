@@ -6,7 +6,7 @@
 /*   By: epenaloz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 18:37:03 by epenaloz          #+#    #+#             */
-/*   Updated: 2024/09/08 20:29:24 by epenaloz         ###   ########.fr       */
+/*   Updated: 2024/09/16 16:44:56 by epenaloz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	put_index(t_list *stack, long num, int i);
 long	find_min(t_list *stack);
 void	ksort(t_stacks *stacks);
 int		is_ordered(t_stacks *stacks, char full);
-long	find_max(t_list *stack);
+int		find_max(t_list *stack);
 void	small_sort(t_stacks *stacks);
 int		get_weight(t_list *stack, long max);
 void	three_sort(t_stacks *stacks, char full);
