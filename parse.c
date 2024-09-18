@@ -6,12 +6,13 @@
 /*   By: epenaloz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 19:40:26 by epenaloz          #+#    #+#             */
-/*   Updated: 2024/09/16 16:33:36 by epenaloz         ###   ########.fr       */
+/*   Updated: 2024/09/18 18:11:09 by epenaloz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
+//returns error message and exits
 void	parse_error(t_stacks *stacks)
 {
 	ft_lstclear(&(stacks->a), del_content);
@@ -20,6 +21,8 @@ void	parse_error(t_stacks *stacks)
 	exit(EXIT_FAILURE);
 }
 
+//checks for the correct syntax for the numbers
+//transforms every found number to a long value
 long	ps_atol(char *str, t_stacks *stacks, int *i)
 {
 	int		sign;
@@ -48,6 +51,7 @@ long	ps_atol(char *str, t_stacks *stacks, int *i)
 	return (num * sign);
 }
 
+//checks if a number is already in the stack
 int	is_repeated(t_list *stack, long num)
 {
 	while (stack != NULL)
@@ -59,6 +63,8 @@ int	is_repeated(t_list *stack, long num)
 	return (0);
 }
 
+//gets and puts all numbers of the args into stack a
+//checks for any errors
 void	get_stacks_from_str(char *str, t_stacks *stacks)
 {
 	int		i;
